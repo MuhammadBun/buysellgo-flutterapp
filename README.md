@@ -1,5 +1,6 @@
-# BuySellGo App , its an app for buy and sell used products in Gaza strip.. with Django backend {https://github.com/MuhammadBun/BuySellGo}
-# Take a look : 
+# BuySellGo App , its an app for buy and sell used products in Gaza strip.. 
+### with Django backend {https://github.com/MuhammadBun/BuySellGo}
+## Take a look : 
 <table>
   <tr>
     <td><img src="https://github.com/MuhammadBun/buysellgo-flutterapp/assets/93766485/2febb3a0-a744-4826-8623-905fb2680942" alt="55"></td>
