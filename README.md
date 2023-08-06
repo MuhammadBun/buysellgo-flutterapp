@@ -10,12 +10,10 @@
     <td><img src="https://github.com/MuhammadBun/buysellgo-flutterapp/assets/93766485/bfc417de-57d1-416a-bb0a-da54765f05c8" alt="1"></td>
    
   </tr>
-  <tr>
-    <td><video width="320" height="240" controls><source src="https://github.com/MuhammadBun/buysellgo-flutterapp/assets/93766485/20dafc46-e291-4663-a13b-c37684c0d3b8" type="video/mp4"></video></td>
-    <td><video width="320" height="240" controls><source src="https://github.com/MuhammadBun/buysellgo-flutterapp/assets/93766485/de8fc8e4-c31f-41f4-a543-2e930e216d61" type="video/mp4"></video></td>
-    <td><video width="320" height="240" controls><source src="https://github.com/MuhammadBun/buysellgo-flutterapp/assets/93766485/39079b70-44e2-4957-817d-c150ae19b1ae
-" type="video/mp4"></video></td>
-  </tr>
+ 
 </table>
  
  
+https://github.com/MuhammadBun/buysellgo-flutterapp/assets/93766485/20dafc46-e291-4663-a13b-c37684c0d3b8
+https://github.com/MuhammadBun/buysellgo-flutterapp/assets/93766485/de8fc8e4-c31f-41f4-a543-2e930e216d61
+https://github.com/MuhammadBun/buysellgo-flutterapp/assets/93766485/39079b70-44e2-4957-817d-c150ae19b1ae
