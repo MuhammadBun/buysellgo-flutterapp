@@ -13,12 +13,8 @@
  
 </table>
 
-<table>
-  <tr>
+ 
  https://github.com/MuhammadBun/buysellgo-flutterapp/assets/93766485/de8fc8e4-c31f-41f4-a543-2e930e216d61
  
-  </tr>
  
-</table>
-
 
