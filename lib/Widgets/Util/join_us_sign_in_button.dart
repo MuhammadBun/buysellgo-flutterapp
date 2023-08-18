@@ -22,8 +22,8 @@ class JoinUsButton extends StatelessWidget {
         margin: EdgeInsets.all(20),
         decoration: BoxDecoration(
             color: isActive
-                ? ColorsConstants.primaryColor
-                : Color.fromARGB(255, 199, 200, 200),
+                ? Colors.white
+                : Colors.grey.withOpacity(0.1),
             boxShadow: const [],
             borderRadius: BorderRadius.circular(10)),
         child: Row(

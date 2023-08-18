@@ -14,7 +14,7 @@ class MainTextStyled extends StatelessWidget {
           return const Text(
             TextsConstants.introJoinUsText,
             style: TextStyle(
-                color: Colors.black,
+                color: Colors.white,
                 fontSize: 24,
                 fontFamily: FontsConstants.primaryFont),
           );
@@ -22,21 +22,30 @@ class MainTextStyled extends StatelessWidget {
           return const Text(
             TextsConstants.discoverText,
             style: TextStyle(
-                color: Colors.black, fontSize: 14, fontWeight: FontWeight.w400),
+                color: Colors.white, fontSize: 14, fontWeight: FontWeight.w400),
           );
         case TextsConstants.googleText:
           return const Text(
             TextsConstants.googleText,
             style: TextStyle(
-                color: Colors.black,
+                color: Colors.white,
                 fontSize: 18,
+                fontFamily: FontsConstants.primaryFont),
+          );
+
+        case TextsConstants.rememberMe:
+          return const Text(
+            TextsConstants.rememberMe,
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 14,
                 fontFamily: FontsConstants.primaryFont),
           );
         case TextsConstants.facebookText:
           return const Text(
             TextsConstants.facebookText,
             style: TextStyle(
-                color: Colors.black,
+                color: Colors.white,
                 fontSize: 18,
                 fontFamily: FontsConstants.primaryFont),
           );
@@ -74,7 +83,7 @@ class MainTextStyled extends StatelessWidget {
           return const Text(
             TextsConstants.agreeText,
             style: TextStyle(
-                color: Colors.black,
+                color: Colors.white,
                 fontSize: 12,
                 fontFamily: FontsConstants.primaryFont),
           );
@@ -82,7 +91,7 @@ class MainTextStyled extends StatelessWidget {
           return const Text(
             TextsConstants.buttonJoinUsText,
             style: TextStyle(
-                color: Colors.white,
+                color: Colors.black,
                 fontSize: 18,
                 fontFamily: FontsConstants.primaryFont),
           );
@@ -106,7 +115,7 @@ class MainTextStyled extends StatelessWidget {
           return const Text(
             TextsConstants.welcomeBackText,
             style: TextStyle(
-                color: Colors.black,
+                color: Colors.white,
                 fontSize: 28,
                 fontFamily: FontsConstants.primaryFont,
                 fontWeight: FontWeight.w100),
@@ -115,7 +124,7 @@ class MainTextStyled extends StatelessWidget {
           return const Text(
             TextsConstants.underWelcomeBackText,
             style: TextStyle(
-                color: Colors.black, fontSize: 16, fontWeight: FontWeight.w300),
+                color: Colors.white, fontSize: 16, fontWeight: FontWeight.w300),
             textAlign: TextAlign.center,
           );
         case TextsConstants.logoText:
@@ -155,6 +164,16 @@ class MainTextStyled extends StatelessWidget {
             style: TextStyle(
               color: Colors.white,
               fontSize: 18,
+              fontFamily: FontsConstants.primaryFont,
+            ),
+            textAlign: TextAlign.center,
+          );
+        case TextsConstants.verfiy:
+          return const Text(
+            TextsConstants.verfiy,
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 20,
               fontFamily: FontsConstants.primaryFont,
             ),
             textAlign: TextAlign.center,

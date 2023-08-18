@@ -12,7 +12,7 @@ class ApiBaseHelper {
   Map<String, String> get _headers {
     Map<String, String> headers = {};
     if (_token != null) {
-      headers['Authorization'] = 'Bearer $_token';
+      headers['Authorization'] = 'Token $_token';
     }
     return headers;
   }
@@ -36,7 +36,7 @@ class ApiBaseHelper {
     try {
       final headers = {..._headers};
       if (_token != null) {
-        headers['Authorization'] = 'Bearer $_token';
+        headers['Authorization'] = 'Token $_token';
       }
 
       final response = await http.get(
@@ -47,11 +47,13 @@ class ApiBaseHelper {
     } on SocketException {
       throw FetchDataException('No Internet connection');
     }
+
     return responseJson;
   }
 
-  Future<dynamic> post(String url, Map<String, String> body) async {
+  Future<dynamic> post(String url, Map<String, dynamic> body) async {
     dynamic responseJson;
+
     try {
       final response = await http.post(
         Uri.parse(_baseUrl + url),
@@ -105,8 +107,7 @@ class ApiBaseHelper {
         var responseJson = json.decode(response.body.toString());
         return responseJson;
       case 201:
-        var responseJson = json.decode(response.body.toString());
-        return responseJson;
+        return {"Message": 'Created'};
       case 400:
         throw BadRequestException(response.body.toString());
       case 401:

@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
-import '../Provider/shared_pref_provider/shared_pref_provider.dart';
+import '../Provider/shared_pref_provider/signin_response_provider.dart';
 
  
 

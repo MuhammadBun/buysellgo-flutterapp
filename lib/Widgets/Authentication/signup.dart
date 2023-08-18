@@ -1,9 +1,12 @@
+import 'dart:convert';
+
 import 'package:buysellgo/Core/Constants/images_path.dart';
 import 'package:buysellgo/Core/Constants/my_colors.dart';
 import 'package:buysellgo/Core/Constants/text.dart';
 import 'package:buysellgo/Provider/Auth%20provider/signup_provider.dart';
+import 'package:buysellgo/Services/dialogs.dart';
 import 'package:buysellgo/Widgets/Authentication/signin.dart';
-import 'package:buysellgo/Widgets/Home/home.dart';
+
 import 'package:buysellgo/Widgets/Util/face_google_botton.dart';
 import 'package:buysellgo/Widgets/Util/join_us_sign_in_button.dart';
 import 'package:buysellgo/Widgets/Util/my_text_field.dart';
@@ -32,7 +35,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
   TextEditingController _nameController = TextEditingController();
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
-  bool checkValue = false;
+  bool policyCheckValue = false;
+  bool rememberCheckValue = false;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   late ValidationSignProcess validation;
@@ -68,7 +72,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: ColorsConstants.primaryColor,
       body: SingleChildScrollView(
         child: Form(
             key: _formKey,
@@ -133,7 +137,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   },
                   function: (value) => validation.validateName()
                       ? null
-                      : 'Please enter a valid email',
+                      : 'Your username must be at least 6 characters.',
                 ),
                 TextFormFieldForApp(
                   controller: _emailController,
@@ -142,51 +146,69 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   onFieldSubmitted: (p0) {
                     FocusScope.of(context).requestFocus(passwordFocusNode);
                   },
-                  function: (value) => validation.validateName()
+                  function: (value) => validation.validateEmail()
                       ? null
-                      : 'This field is required',
+                      : 'Please enter a valid email address.',
                 ),
                 TextFormFieldForApp(
                   controller: _passwordController,
                   hintText: TextsConstants.passwordText,
                   focusNode: passwordFocusNode,
-                  function: (value) => validation.validatePassword()
-                      ? null
-                      : 'This field is required',
+                  function: (value) =>
+                      validation.validatePassword() ? null : 'Remember me',
                 ),
                 Container(
                   margin: const EdgeInsets.only(left: 5),
                   child: Row(
                     children: [
                       Checkbox(
-                        checkColor: Colors.white,
-                        hoverColor: ColorsConstants.primaryColor,
-                        side: BorderSide(
-                            color: ColorsConstants.primaryColor, width: 2),
-                        value: checkValue,
+                        checkColor: ColorsConstants.primaryColor,
+                        hoverColor: Colors.white,
+                        side: BorderSide(color: Colors.white, width: 2),
+                        value: policyCheckValue,
                         onChanged: (value) {
                           setState(() {
-                            checkValue = !checkValue;
+                            policyCheckValue = !policyCheckValue;
                           });
                         },
-                        activeColor: ColorsConstants.primaryColor,
+                        activeColor: Colors.white,
                       ),
                       const MainTextStyled(text: TextsConstants.agreeText)
                     ],
                   ),
                 ),
+                Container(
+                  margin: const EdgeInsets.only(left: 5),
+                  child: Row(
+                    children: [
+                      Checkbox(
+                        checkColor: ColorsConstants.primaryColor,
+                        hoverColor: Colors.white,
+                        side: BorderSide(color: Colors.white, width: 2),
+                        value: rememberCheckValue,
+                        onChanged: (value) {
+                          setState(() {
+                            rememberCheckValue = !rememberCheckValue;
+                          });
+                        },
+                        activeColor: Colors.white,
+                      ),
+                      const MainTextStyled(text: TextsConstants.rememberMe)
+                    ],
+                  ),
+                ),
                 const SizedBox(
-                  height: 20,
+                  height: 10,
                 ),
                 Consumer<SignUpProvider>(
                   builder: (context, value, child) {
                     return JoinUsButton(
                       icon: value.response.status == Status.loading
                           ? LoadingAnimationWidget.fourRotatingDots(
-                              color: Colors.white, size: 20)
+                              color: Colors.black, size: 20)
                           : const Icon(
                               Icons.person,
-                              color: Colors.white,
+                              color: Colors.black,
                             ),
                       text: TextsConstants.buttonJoinUsText,
                       onTap: () async {
@@ -195,17 +217,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             .whenComplete(() {
                           if (value.response.status == Status.completed) {
                             AnimatieNavigation.goTo(context, SignInScreen());
-                          } else {
-                            value.response.status == Status.error
-                                ? ShowDialogMessage.openAnimatedUpdateDialog(
-                                    context,
-                                    'Error',
-                                    'Please input a valid information')
-                                : null;
                           }
                         });
                       },
-                      isActive: checkValue,
+                      isActive: policyCheckValue,
                     );
                   },
                 ),

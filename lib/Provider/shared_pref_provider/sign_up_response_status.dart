@@ -1,0 +1,1 @@
+enum SignUpResponseStatus { exist, notExist }

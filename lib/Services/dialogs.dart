@@ -28,7 +28,8 @@ class _AnimatedErrorContainerState extends State<AnimatedErrorContainer>
     );
     _offsetAnimation = Tween<Offset>(
       begin: const Offset(0.0, -1.0),
-      end: const Offset(0.0, 0.1),
+      end: const Offset(
+          0.0, 0.05), // Change this value to move the container further down
     ).animate(CurvedAnimation(
       parent: _controller,
       curve: Curves.easeInOut,
@@ -47,21 +48,55 @@ class _AnimatedErrorContainerState extends State<AnimatedErrorContainer>
     return SlideTransition(
       position: _offsetAnimation,
       child: Container(
+        width: 200,
+        height: 300,
+        padding: EdgeInsets.all(10),
         margin: EdgeInsets.only(
             right: 20,
             left: 20,
-            bottom: MediaQuery.of(context).size.height * 0.9),
+            bottom: MediaQuery.of(context).size.height * 0.80),
         decoration: BoxDecoration(
-            color: Colors.red, borderRadius: BorderRadius.circular(15)),
+            color: Colors.white, borderRadius: BorderRadius.circular(15)),
         child: Center(
-          child: Text(
-            widget.errorMessage,
-            style: TextStyle(
-              color: Colors.white,
-              fontFamily: FontsConstants.primaryFont,
-            ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    alignment: Alignment.center,
+                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                    decoration: BoxDecoration(
+                        color: Colors.black,
+                        borderRadius: BorderRadius.circular(10)),
+                    child: Text(
+                      "Error",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontFamily: FontsConstants.primaryFont,
+                      ),
+                    ),
+                  ),
+                  IconButton(
+                      onPressed: () {},
+                      icon: Icon(
+                        Icons.close,
+                        color: Colors.black,
+                        size: 20,
+                      )),
+                ],
+              ),
+              Text(
+                widget.errorMessage,
+                style: TextStyle(
+                  color: Colors.black,
+                  fontFamily: FontsConstants.primaryFont,
+                ),
+              ),
+            ],
           ),
-        ),  
+        ),
       ),
     );
   }

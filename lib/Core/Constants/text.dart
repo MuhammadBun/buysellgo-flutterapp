@@ -18,4 +18,6 @@ class TextsConstants {
   static const loginText = 'Login';
   static const buyOption = 'Sell Offers';
   static const sellOption = 'Buy Offers';
+  static const rememberMe = 'Remember me';
+  static const verfiy = 'Thank you for signing up! To complete the verification process, please check your email for a verification link.';
 }

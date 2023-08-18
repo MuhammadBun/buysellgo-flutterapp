@@ -22,25 +22,26 @@ class TextFormFieldForApp extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(top: 20, left: 20, right: 20),
       child: TextFormField(
+        controller: controller,
         onFieldSubmitted: onFieldSubmitted,
         decoration: InputDecoration(
             errorBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(5),
                 borderSide:
-                    const BorderSide(width: 2, color: Colors.transparent)),
+                    const BorderSide(width: 0.5, color: Colors.transparent)),
             enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(5),
                 borderSide:
-                    const BorderSide(width: 2, color: Colors.transparent)),
+                    const BorderSide(width: 1, color: Colors.transparent)),
             focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(5),
                 borderSide:
-                    const BorderSide(width: 2, color: Colors.transparent)),
+                    const BorderSide(width: 0.5, color: Colors.grey)),
             contentPadding: const EdgeInsets.all(15),
             border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(5),
                 borderSide:
-                    const BorderSide(width: 2, color: Colors.transparent)),
+                    const BorderSide(width: 1, color: Colors.transparent)),
             fillColor: Colors.grey.withOpacity(0.1),
             filled: true,
             hintText: hintText,
@@ -59,10 +60,10 @@ class TextFormFieldForApp extends StatelessWidget {
         validator: function,
         style: const TextStyle(
             fontSize: 16,
-            color: Colors.black,
+            color: Colors.white,
             fontFamily: FontsConstants.primaryFont),
         focusNode: focusNode,
-        cursorColor: ColorsConstants.primaryColor,
+        cursorColor: Colors.white,
       ),
     );
   }

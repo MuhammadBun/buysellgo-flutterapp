@@ -1,24 +1,41 @@
-import 'package:buysellgo/API/Base/api_base_response.dart';
 import 'package:buysellgo/Core/Constants/my_colors.dart';
+import 'package:buysellgo/Models/post.dart';
 import 'package:buysellgo/Provider/Auth%20provider/signin_provider.dart';
 import 'package:buysellgo/Provider/Auth%20provider/signup_provider.dart';
-import 'package:buysellgo/Provider/shared_pref_provider/shared_pref_provider.dart';
+import 'package:buysellgo/Provider/posts%20provider/post_provider.dart';
+import 'package:buysellgo/Provider/shared_pref_provider/signin_response_provider.dart';
+import 'package:buysellgo/Widgets/Authentication/signin.dart';
 import 'package:buysellgo/Widgets/Authentication/signup.dart';
-import 'package:buysellgo/Widgets/Home/home.dart';
 import 'package:buysellgo/Widgets/Home/main_screen.dart';
-
-import 'package:buysellgo/Widgets/Profile/profile.dart';
-
-import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'Provider/shared_pref_provider/sign_up_pref.dart';
 
 void main() async {
-  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     systemNavigationBarColor: ColorsConstants.primaryColor,
   ));
   runApp(const MyApp());
+
+  // SignUpResponseProvider signUpResponseProvider = SignUpResponseProvider();
+  // final s = await signUpResponseProvider.retrieveSignUpResponse();
+  // print(s!.user.email);
+
+  // SignInResponseProvider signInResponseProvider = SignInResponseProvider();
+  // final s1 = await signInResponseProvider.retrieveSignInResponse();
+  // // print(s1!.token);
+  // // print(s1.user.id);
+  // PostProvider postProvider = PostProvider();
+  // final posts = await postProvider.fetchPostList();
+  // await postProvider.addPost(Post(
+  //   description: "Hehehe",
+  //   contactInfo: "test",
+  //   postType: true,
+  //   state: true,
+  //   likes: 0,
+  // ));
+  // print(postProvider.postList);
 }
 
 class MyApp extends StatefulWidget {
@@ -29,10 +46,10 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  // This widget is the root of your application.@override
+  @override
   void initState() {
     super.initState();
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
       statusBarColor: ColorsConstants.primaryColor,
     ));
   }
@@ -57,40 +74,7 @@ class _MyAppState extends State<MyApp> {
           theme: ThemeData(
             useMaterial3: true,
           ),
-          home: SignUpScreen()),
-    );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    String error = '';
-    return Scaffold(
-      body: Center(
-        child: Consumer<SignUpProvider>(
-          builder: (context, value, child) {
-            return ElevatedButton(
-                onPressed: () async {},
-                child: value.response.status == Status.loading
-                    ? LoadingAnimationWidget.fourRotatingDots(
-                        color: Colors.purple, size: 20)
-                    : Text("Open"));
-          },
-        ),
-      ),
-    );
-  }
-}
-
-class StoryPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.blueAccent,
-      body: Center(
-        child: Text('This is a story'),
-      ),
+          home: const MainAppView()),
     );
   }
 }

@@ -18,12 +18,12 @@ class SignInResponseProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> retrieveSignInResponse() async {
+  Future<SignInResponse?> retrieveSignInResponse() async {
     _signInResponse = await _sharedPrefs.retrieveSignInResponse();
     _status = _signInResponse != null
         ? SignInResponseStatus.exist
         : SignInResponseStatus.notExist;
-    notifyListeners();
+    return signInResponse;
   }
 
   Future<void> deleteSignInResponse() async {
